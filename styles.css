@@ -1,0 +1,239 @@
+:root {
+  color-scheme: light;
+  --bg: #f7f7fb;
+  --card: #ffffff;
+  --ink: #0f172a;
+  --muted: #5f6b88;
+  --border: #e4e7ef;
+  --accent: #4f46e5;
+  --accent-soft: #eef2ff;
+  --radius: 16px;
+  --shadow: 0 15px 30px rgba(15, 23, 42, 0.08);
+  --mono: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background: radial-gradient(circle at 20% 20%, #eef2ff, transparent 25%),
+    radial-gradient(circle at 80% 0%, #e0f2fe, transparent 22%),
+    var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+main.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}
+
+.hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  margin: 6px 0;
+  font-size: clamp(28px, 4vw, 40px);
+}
+
+.lede {
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 720px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.card--variant {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card__title {
+  margin: 4px 0 0;
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field__label {
+  font-weight: 600;
+}
+
+input[type="file"],
+input[type="number"] {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 15px;
+}
+
+input[type="number"] {
+  max-width: 160px;
+}
+
+.hint {
+  color: var(--muted);
+}
+
+.button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.button--ghost {
+  background: var(--accent-soft);
+  color: var(--accent);
+  box-shadow: none;
+  border: 1px solid var(--border);
+}
+
+.button--plain {
+  background: transparent;
+  color: var(--accent);
+  box-shadow: none;
+  border: 1px solid transparent;
+}
+
+.status {
+  min-height: 20px;
+  color: var(--muted);
+}
+
+.results {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.results__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 14px;
+}
+
+.preview iframe {
+  width: 100%;
+  min-height: 360px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.source {
+  border-top: 1px dashed var(--border);
+  padding-top: 8px;
+}
+
+.source pre {
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 12px;
+  padding: 12px;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.pill {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 12px;
+  height: fit-content;
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+  }
+  .results__header,
+  .card__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .button,
+  .button--ghost,
+  .button--plain {
+    width: fit-content;
+  }
+}

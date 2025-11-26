@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mail Variant Builder</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Vercel-ready playground</p>
+          <h1>Mail variant builder</h1>
+          <p class="lede">
+            Upload a zip that contains your HTML email and an <code>images/</code> folder.
+            Choose how many variants you need and download them one-by-one or all at once.
+          </p>
+        </div>
+        <div class="pill">Client-side only · no uploads leave the browser</div>
+      </header>
+
+      <section class="card">
+        <form id="builder-form" class="form">
+          <label class="field">
+            <span class="field__label">Email bundle (.zip)</span>
+            <input id="zip-input" name="zip" type="file" accept=".zip" required />
+            <small class="hint">Expected structure: <code>template.html</code> and an <code>images/</code> folder.</small>
+          </label>
+
+          <label class="field">
+            <span class="field__label">How many variants?</span>
+            <input id="variant-count" name="variantCount" type="number" min="1" max="10" value="3" />
+          </label>
+
+          <button id="generate-btn" type="submit" class="button">Generate variants</button>
+          <div id="status" class="status" role="status" aria-live="polite"></div>
+        </form>
+      </section>
+
+      <section id="results" class="results" hidden>
+        <div class="results__header">
+          <div>
+            <p class="eyebrow">Generated templates</p>
+            <h2 id="result-title">Variants</h2>
+          </div>
+          <div class="actions">
+            <button id="download-all" class="button button--ghost">Download all as zip</button>
+          </div>
+        </div>
+        <div id="variant-grid" class="grid"></div>
+      </section>
+    </main>
+
+    <template id="variant-card">
+      <article class="card card--variant">
+        <header class="card__header">
+          <div>
+            <p class="eyebrow">Variant</p>
+            <h3 class="card__title"></h3>
+          </div>
+          <div class="actions">
+            <button class="button button--ghost download-one">Download</button>
+            <button class="button button--plain copy-one">Copy HTML</button>
+          </div>
+        </header>
+        <div class="preview">
+          <iframe title="Variant preview" sandbox="allow-same-origin"></iframe>
+        </div>
+        <details class="source">
+          <summary>View HTML</summary>
+          <pre><code></code></pre>
+        </details>
+      </article>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
